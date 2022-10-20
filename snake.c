@@ -84,18 +84,6 @@ static void check(int *coord, int max)
         *coord -= max;
 }
 
-/*
-static void move_star(struct star *s, int max_x, int max_y)
-{
-    hide_star(s);
-    s->cur_x += s->dx;
-    check(&s->cur_x, max_x);
-    s->cur_y += s->dy;
-    check(&s->cur_y, max_y);
-    show_star(s);
-}
-*/
-
 static void move_list_stars(struct list_stars **begin, struct list_stars **end, int max_x, int max_y)
 {
     hide_star(&((*end)->star));
@@ -175,8 +163,6 @@ int main()
     set_direction(&s, -1, 0);
     struct list_stars *begin = node_create(s);
     struct list_stars *end = begin;
-//    add_end(&end);
-//    add_end(&end);
 
     new_purpose(&p, col, row);
     show_purpose(&p);
@@ -204,7 +190,6 @@ int main()
 				timeout(speed);
                 break;
             case ERR:
-                //move_star(&s, col-1, row-1);
                 move_list_stars(&begin, &end, col-1, row-1);
                 show_purpose(&p);
                 break;
